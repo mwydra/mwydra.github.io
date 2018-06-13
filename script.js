@@ -172,9 +172,9 @@ $(document).ready(function() {
     var $relatedTaskRow = $(event.target).parents('[data-task-id]');
     var relatedTaskId = $relatedTaskRow.attr('data-task-id');
     var relatedTask = availableTasks[relatedTaskId];
-    var selectedListId = $relatedTaskRow.find('[data-list-name-select]').val();
+    var selectedIdList = $relatedTaskRow.find('[data-list-name-select]').val();
 
-    if (!selectedListId) {
+    if (!selectedIdList) {
       alert('You have to select a board and a list first!');
       return;
     }
@@ -188,7 +188,7 @@ $(document).ready(function() {
       data: JSON.stringify({
         name: relatedTask.title,
         description: relatedTask.content,
-        listId: selectedListId
+        idList: selectedIdList
       }),
       success: function(data) {
         console.log('Card created - ' + data.shortUrl);
